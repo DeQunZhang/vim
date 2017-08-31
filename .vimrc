@@ -4,7 +4,7 @@
     set ruler                   "显示光标当前位置
     let mapleader = ","
     set t_Co=256
-    colorscheme default
+    colorscheme molokai
     set scrolloff=5             "至少保留5行
     syn on                      "语法支持
     set ai                      "自动缩u
