@@ -34,6 +34,10 @@
     set fileencodings=utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1   "使用utf-8或gbk打开文件
     set termencoding=utf-8
 
+    syntax enable
+    syntax on
+
+
     " 设置快捷键将选中文本块复制至系统剪贴板
     vnoremap <Leader>y "+y
     " 设置快捷键将系统剪贴板内容粘贴至vim
@@ -54,6 +58,13 @@ highlight CursorColumn cterm=NONE ctermbg=gray
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 "}
+"cpp-enhanced{
+let g:cpp_class_scope_highlight = 1     "highlight class scope
+let g:cpp_member_variable_highlight = 1 "highlight member
+let g:cpp_class_decl_highlight = 1      "highlight class declaration
+let g:cpp_experimental_simple_template_highlight = 1    "highlight template, slow but in most cases
+let g:cpp_concepts_highlight = 1        "highlight library concept
+"}
 
 "{{conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
     "let mapleader = ','
@@ -62,9 +73,39 @@ let g:indent_guides_guide_size = 1
     "nnoremap <leader>t : tabe<CR>
 "}}
 
-"NERDTreeCommenter{
+"NERDTree{
     filetype plugin on
     nnoremap <Leader>lf :NERDTree<cr>
+"}
+
+"NERDCommenter{
+let g:NERDSpaceDelims = 1 " Add spaces after comment delimiters by default
+let g:NERDCompactSexyComs = 1 " Use compact syntax for prettified multi-line comments
+let g:NERDDefaultAlign = 'left' " Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDAltDelims_java = 1 " Set a language to use its alternate delimiters by default
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } } " Add your own custom formats or override the defaults
+let g:NERDCommentEmptyLines = 1 " Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDTrimTrailingWhitespace = 1 " Enable trimming of trailing whitespace when uncommenting
+"}
+
+
+"easymotion{
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+omap t <Plug>(easymotion-bd-tl) " Bidirectional & within line 't' motion
+let g:EasyMotion_use_upper = 1 " Use uppercase target labels and type as a lower case
+let g:EasyMotion_smartcase = 1 " type `l` and match `l`&`L`
+let g:EasyMotion_use_smartsign_us = 1   " Smartsign (type `3` and match `3`&`#`)
 "}
 
 "Tagbar{
